@@ -1,14 +1,14 @@
 # use-calendar
 
-An open-source library that provides only the **minimal features** needed to implement a calendar in React environments.
+React 환경에서 달력 구현에 필요한 **최소 기능**만을 제공하는 오픈소스 라이브러리입니다.
 
-## Installation
+## 설치
 
 ```bash
 npm install use-calendar
 ```
 
-## Usage Example
+## 사용 예시
 
 ```tsx
 import { useCalendar } from "use-calendar";
@@ -50,35 +50,35 @@ function Calendar() {
 
 ### `useCalendar({ year, month, options })`
 
-- `year`: Year (e.g., 2025)
-- `month`: Month (1~12)
-- `options` _(optional)_
-  - `locale`: date-fns locale object (default: Korean)
-  - `weekStartsOn`: Start day of the week (0: Sunday, 1: Monday, ...)
-  - `usePreviousMonth`: Show previous month's dates (default: true)
-  - `useNextMonth`: Show next month's dates (default: true)
+- `year`: 연도 (예: 2025)
+- `month`: 월 (1~12)
+- `options` _(선택)_
+  - `locale`: date-fns의 locale 객체 (기본값: 한국어)
+  - `weekStartsOn`: 주 시작 요일 (0: 일요일, 1: 월요일, ...)
+  - `usePreviousMonth`: 이전 달 날짜 표시 여부 (기본값: true)
+  - `useNextMonth`: 다음 달 날짜 표시 여부 (기본값: true)
 
-#### Returns
+#### 반환값
 
-- `calendarWeeks`: 2D array (array of weeks, each element is a Date or null)
-- `weekdays`: Array of weekday strings
+- `calendarWeeks`: 2차원 배열(주별로 나뉜 날짜 배열, 각 요소는 Date 또는 null)
+- `weekdays`: 요일 문자열 배열
 
 ### `useWeekdays({ locale, weekStartsOn })`
 
-- A hook that returns an array of weekday strings
+- 요일 문자열 배열을 반환하는 훅
 
-## Development Environment & Scripts
+## 개발 환경 및 스크립트
 
-- **Local development**:
+- **로컬 개발**:
   ```bash
   npm install
   npm run dev
   ```
-- **Build**:
+- **빌드**:
   ```bash
   npm run build
   ```
-- **Test**:
+- **테스트**:
   ```bash
   npm run test
   ```
@@ -87,13 +87,13 @@ function Calendar() {
   npm run lint
   ```
 
-## Development Rules
+## 개발 규칙
 
-- TypeScript based
-- Uses React 19, date-fns 4
-- PRs and issues are welcome
+- TypeScript 기반
+- React 19, date-fns 4 사용
+- PR 및 이슈 환영
 
-## Contribution
+## 기여
 
-1. Create an issue or pull request
-2. All code must pass tests and lint before merging
+1. 이슈 등록 또는 PR 생성
+2. 코드 작성 시 테스트 및 lint 통과 필수
