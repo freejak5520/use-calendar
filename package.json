@@ -20,6 +20,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "tsc": "tsc --watch"
   },
   "peerDependencies": {
     "react": "^19",
