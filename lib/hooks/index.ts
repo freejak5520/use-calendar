@@ -1,4 +1,3 @@
-import type { Locale } from "date-fns";
 import {
   addDays,
   endOfMonth,
@@ -6,34 +5,49 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
-import { ko } from "date-fns/locale";
+import { enUS, ko } from "date-fns/locale";
 import { useMemo } from "react";
 import { range } from "../utils";
 
-type UseCalendarOptions = {
+type Locale = "ko" | "en_US";
+
+type WeekdaysOptions = {
   locale?: Locale;
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+};
+
+type CalendarOptions = WeekdaysOptions & {
+  usePreviousMonth?: boolean;
+  useNextMonth?: boolean;
+};
+
+const LOCALE_MAP = {
+  ko: ko,
+  en_US: enUS,
+} as const;
+
+const getLocale = (locale: Locale) => {
+  return LOCALE_MAP[locale];
 };
 
 /**
  * locale에 따라 요일 배열을 반환하는 훅
  */
 export function useWeekdays({
-  locale = ko,
+  locale = "ko",
   weekStartsOn = 0,
-}: UseCalendarOptions = {}) {
+}: WeekdaysOptions = {}) {
   return useMemo(() => {
-    const baseDate = startOfWeek(new Date(), { locale, weekStartsOn });
+    const fnsLocale = getLocale(locale);
+    const baseDate = startOfWeek(new Date(), {
+      locale: fnsLocale,
+      weekStartsOn,
+    });
     return Array.from({ length: 7 }).map((_, i) =>
-      format(addDays(baseDate, i), "EEEEEE", { locale })
+      format(addDays(baseDate, i), "EEEEEE", { locale: fnsLocale })
     );
   }, [locale, weekStartsOn]);
 }
-
-type CalendarOptions = UseCalendarOptions & {
-  usePreviousMonth?: boolean;
-  useNextMonth?: boolean;
-};
 
 /**
  * 달력 구현을 위한 데이터를 반환합니다.
@@ -47,7 +61,12 @@ export const useCalendar = ({
   month: number;
   options?: CalendarOptions;
 }) => {
-  const { locale = ko, weekStartsOn = 0, usePreviousMonth = true, useNextMonth = true } = options;
+  const {
+    locale = "ko",
+    weekStartsOn = 0,
+    usePreviousMonth = true,
+    useNextMonth = true,
+  } = options;
 
   const monthFirstDay: Date = startOfMonth(new Date(year, month - 1, 1));
   const monthLastDay: Date = endOfMonth(new Date(year, month - 1, 1));
@@ -81,7 +100,7 @@ export const useCalendar = ({
   });
 
   const chunk = (array: (Date | null)[], size: number) => {
-    const chunks = [];
+    const chunks: (Date | null)[][] = [];
     for (let i = 0; i < array.length; i += size) {
       chunks.push(array.slice(i, i + size));
     }
