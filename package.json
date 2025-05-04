@@ -1,11 +1,17 @@
 {
   "name": "@freejak5520/use-calendar",
   "private": false,
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "README-ko_kr.md",
+    "LICENSE"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "vite",
