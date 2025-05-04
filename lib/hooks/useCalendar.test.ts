@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { useCalendar } from "./useCalendar";
+import { useCalendar } from ".";
 
 /**
  * @vitest-environment happy-dom

@@ -1,1 +1,1 @@
-export * from "./hooks/useCalendar";
+export * from "./hooks";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCalendar } from "../lib/hooks/useCalendar";
+import { useCalendar } from "../lib/hooks";
 
 import "./App.css";
 
