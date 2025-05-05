@@ -53,7 +53,7 @@ function Calendar() {
 - `year`: 연도 (예: 2025)
 - `month`: 월 (1~12)
 - `options` _(선택)_
-  - `locale`: date-fns의 locale 객체 (기본값: 한국어)
+  - `locale`: 사용할 로케일 문자열 (현재는 "ko"와 "en_US"만 지원)
   - `weekStartsOn`: 주 시작 요일 (0: 일요일, 1: 월요일, ...)
   - `usePreviousMonth`: 이전 달 날짜 표시 여부 (기본값: true)
   - `useNextMonth`: 다음 달 날짜 표시 여부 (기본값: true)
@@ -91,9 +91,5 @@ function Calendar() {
 
 - TypeScript 기반
 - React 19, date-fns 4 사용
+- React 18 및 기타 버전 지원 예정
 - PR 및 이슈 환영
-
-## 기여
-
-1. 이슈 등록 또는 PR 생성
-2. 코드 작성 시 테스트 및 lint 통과 필수
