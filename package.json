@@ -1,7 +1,7 @@
 {
   "name": "@freejak5520/use-calendar",
   "private": false,
-  "version": "0.0.2-alpha.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -19,12 +19,12 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm install && npm run build",
     "tsc": "tsc --watch"
   },
   "peerDependencies": {
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "^19||^18",
+    "react-dom": "^19||^18"
   },
   "dependencies": {
     "date-fns": "^4.1.0"
